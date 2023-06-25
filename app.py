@@ -36,9 +36,9 @@ def get_face_descriptor():
     for image in image_list:
         descriptor = get_file_descriptor(image)
         
-        if not descriptor:
+        if descriptor is False:
             raise Exception("Image doesn't contain any faces: %s" % (image.filename))
-
+        
         result.append({
             "filename": image.filename,
             "descriptor": json.dumps(descriptor.tolist()),
@@ -64,7 +64,7 @@ def compare_faces():
     else:
         main_descriptor = numpy.array(json.loads(main_descriptor))
 
-    if not descriptor:
+    if descriptor is False:
         raise Exception("Main image doesn't contain any faces!")
 
     diffs = []

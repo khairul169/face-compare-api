@@ -64,7 +64,7 @@ def compare_faces():
     else:
         main_descriptor = numpy.array(json.loads(main_descriptor))
 
-    if descriptor is False:
+    if main_descriptor is False:
         raise Exception("Main image doesn't contain any faces!")
 
     diffs = []
